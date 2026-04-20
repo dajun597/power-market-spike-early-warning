@@ -231,24 +231,12 @@ To make the workflow more realistic:
 
 ## Dashboard
 
-The Streamlit dashboard is designed as a pseudo-real-time monitoring tool rather than a static visualisation page.
+## Dashboard
 
-Current dashboard modules include:
-- **Current Snapshot**  
-  Displays the latest timestamp, latest spike probability, and latest risk level.
+![Dashboard Preview](figures/prototype_image.png)
 
-- **Recent Risk Trend**  
-  Shows the latest movement in spike forecast risk over recent periods.
-
-- **Driver Snapshot**  
-  Displays the latest values of key system stress drivers.
-
-- **High-Risk Intervals**  
-  Highlights the most important time intervals for monitoring.
-
-This dashboard is intended to answer a practical decision-support question:
-
-> Which periods currently deserve the most attention from a trading or operations perspective?
+The current dashboard is a prototype for demonstration purposes only.  
+A production-ready, fully operational dashboard is still under development.
 
 ---
 
