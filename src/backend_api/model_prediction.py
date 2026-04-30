@@ -4,7 +4,7 @@ import pandas as pd
 from pathlib import Path
 
 from src.features.feature_engineer import spike_feature
-from src.backend.risk import risk_analysis
+from src.backend_api.risk import risk_analysis
 
 def get_project_root():
     current=Path(__file__).resolve()
