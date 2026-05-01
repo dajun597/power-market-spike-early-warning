@@ -1,0 +1,111 @@
+{
+  "time_column": "time",
+  "raw_required_columns": [
+    "time",
+    "CCGT",
+    "INTIRL",
+    "NPSHYD",
+    "OCGT",
+    "OTHER",
+    "PS",
+    "WIND",
+    "TotalAcceptedBidVolume",
+    "NetImbalanceVolume",
+    "demand_prediction",
+    "offer_bid_spread",
+    "month"
+  ],
+  "numeric_columns": [
+    "CCGT",
+    "INTIRL",
+    "NPSHYD",
+    "OCGT",
+    "OTHER",
+    "PS",
+    "WIND",
+    "TotalAcceptedBidVolume",
+    "NetImbalanceVolume",
+    "demand_prediction",
+    "offer_bid_spread",
+    "month"
+  ],
+  "lag_features": [
+    {
+      "source": "CCGT",
+      "lag": 1,
+      "output": "CCGT_lag_1"
+    },
+    {
+      "source": "INTIRL",
+      "lag": 1,
+      "output": "INTIRL_lag_1"
+    },
+    {
+      "source": "NPSHYD",
+      "lag": 1,
+      "output": "NPSHYD_lag_1"
+    },
+    {
+      "source": "OCGT",
+      "lag": 1,
+      "output": "OCGT_lag_1"
+    },
+    {
+      "source": "OTHER",
+      "lag": 1,
+      "output": "OTHER_lag_1"
+    },
+    {
+      "source": "PS",
+      "lag": 1,
+      "output": "PS_lag_1"
+    },
+    {
+      "source": "WIND",
+      "lag": 1,
+      "output": "WIND_lag_1"
+    },
+    {
+      "source": "TotalAcceptedBidVolume",
+      "lag": 1,
+      "output": "TotalAcceptedBidVolume_lag_1"
+    }
+  ],
+  "derived_features": [
+    {
+      "name": "ccgt_wind_ratio",
+      "operation": "divide",
+      "numerator": "CCGT_lag_1",
+      "denominator": "WIND_lag_1"
+    },
+    {
+      "name": "imbalance_ccgt",
+      "operation": "divide",
+      "numerator": "NetImbalanceVolume",
+      "denominator": "CCGT_lag_1"
+    },
+    {
+      "name": "ps_imbalance",
+      "operation": "multiply",
+      "left": "PS_lag_1",
+      "right": "NetImbalanceVolume"
+    }
+  ],
+  "model_feature_columns": [
+    "demand_prediction",
+    "NetImbalanceVolume",
+    "ccgt_wind_ratio",
+    "imbalance_ccgt",
+    "ps_imbalance",
+    "offer_bid_spread",
+    "month",
+    "CCGT_lag_1",
+    "INTIRL_lag_1",
+    "NPSHYD_lag_1",
+    "OCGT_lag_1",
+    "OTHER_lag_1",
+    "PS_lag_1",
+    "WIND_lag_1",
+    "TotalAcceptedBidVolume_lag_1"
+  ]
+}

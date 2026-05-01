@@ -13,7 +13,7 @@ PROJECT_ROOT = BASE_DIR.parent if (BASE_DIR / 'src').exists() is False else BASE
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.append(str(PROJECT_ROOT))
 
-from src.backend.model_prediction import SpikePredictor
+from src.backend_api.model_prediction import SpikePredictor
 
 
 st.set_page_config(page_title="Spike Risk Dashboard", layout="wide")
@@ -60,7 +60,7 @@ def load_raw_data(file) -> pd.DataFrame:
 
 
 # ======================
-# 2. Run backend prediction
+# 2. Run backend_api prediction
 # ======================
 @st.cache_data(show_spinner=False)
 def run_prediction(raw_df: pd.DataFrame) -> pd.DataFrame:
